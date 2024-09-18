@@ -106,7 +106,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form text-left" action="{{ route('register') }}" method="post">
+                <form role="form text-left" action="{{ route('register_store') }}" method="post">
                     @csrf
                   <div class="mb-3">
                     <input type="text" class="form-control" name="name" placeholder="Nom" aria-label="Name" aria-describedby="email-addon">
@@ -127,7 +127,7 @@
                     </label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Créer</button>
+                    <input type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Créer</input>
                   </div>
                   <p class="text-sm mt-3 mb-0">Vous avez deja ? <a href="{{ route('login') }}" class="text-dark font-weight-bolder">un compte </a></p>
                 </form>
