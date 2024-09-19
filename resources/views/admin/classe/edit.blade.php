@@ -17,6 +17,17 @@
               <label for="intitule">Intitulé</label>
               <input type="text" class="form-control" name="intitule" id="intitule" required>
             </div>
+            <div class="form-group">
+            <select name="option_id"   class="form-select" aria-label="Default select example">
+
+                @forelse ($options as $option )
+                <option value={{ $option->id }} >{{ $option->intitule }}</option>
+                @empty
+
+                @endforelse
+                <option  >aucune</option>
+              </select>
+            </div>
             <!-- Ajoutez d'autres champs si nécessaire -->
             <button type="submit" class="btn btn-primary">Save</button>
           </form>
@@ -24,3 +35,10 @@
       </div>
     </div>
   </div>
+<script>
+
+
+</script>
+
+
+

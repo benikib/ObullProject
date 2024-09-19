@@ -25,11 +25,16 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DirectionController::class, 'index']);
+//route pour option
     Route::get('/options', [DirectionController::class, 'options'])->name("options");
     Route::post('/option_store', [DirectionController::class, 'option_store'])->name("option_store");
     Route::put('/option/update', [DirectionController::class, 'option_update'])->name('option_update');
     Route::delete('/option/destroy', [DirectionController::class, 'option_destroy'])->name('option_destroy');
-
+//route pour classe
+    Route::get('/classes', [DirectionController::class, 'classe'])->name("classe");
+    Route::post('/classe_store', [DirectionController::class, 'classe_store'])->name("classe_store");
+    Route::put('/classe/update', [DirectionController::class, 'classe_update'])->name('classe_update');
+    Route::delete('/classe/destroy', [DirectionController::class, 'classe_destroy'])->name('classe_destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

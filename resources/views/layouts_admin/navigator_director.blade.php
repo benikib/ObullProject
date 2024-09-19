@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/virtual-reality.html">
+          <a class="nav-link  " href="{{ route('classe') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -136,10 +136,10 @@
           </a>
         </li>
         <li class="nav-item">
-        
+
         </li>
         <li class="nav-item">
-         
+
         </li>
       </ul>
     </div>
@@ -147,10 +147,10 @@
       <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
         <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpg')"></div>
         <div class="card-body text-start p-3 w-100">
-       
+
           <div class="docs-info">
             <h6 class="text-white up mb-0">Besoin d'aide?</h6>
-            
+
             <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
           </div>
         </div>
