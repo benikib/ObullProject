@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="editForm" action="{{ route('classe_update') }}" method="POST">
+          <form id="editForm" action="{{ route('option_update') }}" method="POST">
             @csrf
             @method('PUT')
             <input type="hidden" name="id" id="userId">
