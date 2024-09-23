@@ -35,6 +35,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/classe_store', [DirectionController::class, 'classe_store'])->name("classe_store");
     Route::put('/classe/update', [DirectionController::class, 'classe_update'])->name('classe_update');
     Route::delete('/classe/destroy', [DirectionController::class, 'classe_destroy'])->name('classe_destroy');
+
+   //route pour branche
+   Route::get('/branch', [DirectionController::class, 'branch'])->name("branch");
+   Route::post('/branch_store', [DirectionController::class, 'branch_store'])->name("branch_store");
+   Route::put('/branch/update', [DirectionController::class, 'branch_update'])->name('branch_update');
+   Route::delete('/branch/destroy', [DirectionController::class, 'branch_destroy'])->name('branch_destroy');
+
+ //route pour cours
+ Route::get('/cours', [DirectionController::class, 'cours'])->name("branch");
+ Route::post('/cours_store', [DirectionController::class, 'cours_store'])->name("cours_store");
+ Route::put('/cours/update', [DirectionController::class, 'cours_update'])->name('cours_update');
+ Route::delete('/cours/destroy', [DirectionController::class, 'cours_destroy'])->name('cours_destroy');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

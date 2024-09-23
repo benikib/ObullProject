@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branche;
 use App\Models\Classe;
+use App\Models\Cour;
 use App\Models\Direction;
 use App\Models\Option;
 use Illuminate\Http\Request;
@@ -150,7 +152,123 @@ public function classe_destroy(Request $request)
      return  redirect()->back()->with('succes ', 'mise à jour avec success');
 }
 
+public function branch(){
+    $branchs = Branche::all();
 
+    return view('admin.branch.index',compact('branchs'));
+}
+public function branch_store(Request $request)
+{
+
+    $direction_id = Auth::user()->id;
+
+    // Valider les données entrantes (si nécessaire, par exemple pour un formulaire)
+    $validatedData = $request->validate([
+        'intitule' => 'required|string|max:255',
+          // Exemple de validation
+        // Ajoutez ici d'autres champs selon vos besoins
+    ]);
+
+    // Créer une nouvelle option
+    $branch = new Branche();
+    $branch->intitule = $validatedData['intitule'];  // Assurez-vous que 'nom_option' correspond au champ dans votre formulaire
+     // Associez l'option à l'utilisateur connecté
+    $branch->save();
+
+    // Récupérer toutes les options à afficher dans la vue
+    $branch = Option::all();
+
+    // Retourner la vue avec les options
+    return  redirect()->back()->with('succes ', 'mise à jour avec success');
+}
+public function branch_update(Request $request)
+{
+    $validatedData = $request->validate([
+        'id' => 'required|integer|exists:branches,id',
+        'intitule' => 'required|string|max:255',
+    ]);
+
+
+    $branch = Branche::find($validatedData['id']);
+    $branch->intitule = $validatedData['intitule'];
+    $branch->save();
+
+    return  redirect()->back()->with('success', 'update avec success');
+}
+public function branch_destroy(Request $request)
+{
+    $validatedData = $request->validate([
+        'id' => 'required|integer|exists:classes,id',
+    ]);
+
+    $branch = Branche::find($validatedData['id']);
+    $branch->delete();
+
+     return  redirect()->back()->with('succes ', 'mise à jour avec success');
+}
+
+
+
+public function cours(){
+    $branchs = Branche::all();
+    $cours = DB::table('cours')
+    ->join('branches', 'cours.branch_id', '=', 'branches.id') // Correction des alias
+    ->select('cours.*', 'branches.intitule as option' , 'branches.id as branch_id') // Sélection des colonnes souhaitées
+    ->get();
+    return view('admin.cours.index',compact('cours','branchs'));
+}
+public function cours_store(Request $request)
+{
+
+    $direction_id = Auth::user()->id;
+
+    // Valider les données entrantes (si nécessaire, par exemple pour un formulaire)
+    $validatedData = $request->validate([
+        'intitule' => 'required|string|max:255',
+        'branch_id' => 'required|integer|exists:branches,id',  // Exemple de validation
+        // Ajoutez ici d'autres champs selon vos besoins
+    ]);
+
+    // Créer une nouvelle option
+    $cours = new Cour();
+    $cours->intitule = $validatedData['intitule'];  // Assurez-vous que 'nom_option' correspond au champ dans votre formulaire
+    $cours->branch_id = $validatedData['branch_id'];  // Associez l'option à l'utilisateur connecté
+    $cours->save();
+
+    // Récupérer toutes les options à afficher dans la vue
+
+
+    // Retourner la vue avec les options
+    return  redirect()->back()->with('succes ', 'mise à jour avec success');
+}
+
+public function cours_update(Request $request)
+{
+    $validatedData = $request->validate([
+        'id' => 'required|integer|exists:branches,id',
+        'branch_id' => 'required|integer|exists:branches,id',
+        'intitule' => 'required|string|max:255',
+    ]);
+
+
+    $cours = Cour::find($validatedData['id']);
+    $cours->intitule = $validatedData['intitule'];
+    $cours->branch_id = $validatedData['branch_id'];
+    $cours->save();
+
+    return  redirect()->back()->with('success', 'update avec success');
+}
+public function cours_destroy(Request $request)
+{
+    $validatedData = $request->validate([
+        'id' => 'required|integer|exists:cours,id',
+    ]);
+
+    $cours = Cour::find($validatedData['id']);
+    $cours->delete();
+
+     return  redirect()->back()->with('succes ', 'mise à jour avec success');
+}
 
 
     /**
