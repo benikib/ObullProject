@@ -9,13 +9,24 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="editForm" action="{{ route('option_update') }}" method="POST">
+          <form id="editForm" action="{{ route('classe_update') }}" method="POST">
             @csrf
             @method('PUT')
             <input type="hidden" name="id" id="userId">
             <div class="form-group">
               <label for="intitule">Intitulé</label>
               <input type="text" class="form-control" name="intitule" id="intitule" required>
+            </div>
+            <div class="form-group">
+            <select name="option_id"   class="form-select" aria-label="Default select example">
+
+                @forelse ($options as $option )
+                <option value={{ $option->id }} >{{ $option->intitule }}</option>
+                @empty
+
+                @endforelse
+                <option  >aucune</option>
+              </select>
             </div>
             <!-- Ajoutez d'autres champs si nécessaire -->
             <button type="submit" class="btn btn-primary">Save</button>
@@ -24,3 +35,10 @@
       </div>
     </div>
   </div>
+<script>
+
+
+</script>
+
+
+

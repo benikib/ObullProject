@@ -61,6 +61,7 @@
                 </div>
                 <div class="card-body">
                   <form role="form" method="post" action={{ route('login') }}>
+                    @csrf
                     <label>Email </label>
                     <div class="mb-3">
                       <input type="email"  name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
@@ -74,7 +75,7 @@
                       <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Connexion </button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Connexion </button>
                     </div>
                   </form>
                 </div>
